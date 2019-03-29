@@ -26,7 +26,10 @@ namespace TicTacToe
         /// <param name="playerType"></param>
         private void UpdateCurrentPlayerName(PlayerType playerType)
         {
-            var playerName = playerType == PlayerType.Cpu ? PlayerType.Cpu.ToString() : GameManager.Instance.PseudoPanel.Pseudo.Value;
+            var playerName = playerType == PlayerType.Cpu 
+                ? PlayerType.Cpu.ToString() 
+                : GameManager.Instance.PseudoPanel.Pseudo.Value;
+            
             activePlayerText.text = $"Active player: {playerName}";
         }
     }
