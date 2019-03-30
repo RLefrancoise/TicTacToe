@@ -8,8 +8,16 @@ namespace TicTacToe
     /// Slot of the tic tac toe grid.
     /// </summary>
     [RequireComponent(typeof(BoxCollider))]
+    [RequireComponent(typeof(AudioSource))]
     public class GridSlot : MonoBehaviour
     {
+        [SerializeField]
+        private AudioSource audioSource;
+        [SerializeField]
+        private AudioClip circle;
+        [SerializeField]
+        private AudioClip cross;
+        
         /// <summary>
         /// Symbol attached to this slot
         /// </summary>
@@ -39,6 +47,9 @@ namespace TicTacToe
             if (symbol == null) return;
             
             symbol.AttachToSlot(this);
+
+            audioSource.clip = symbol.Type == TicTacToe.Symbol.SymbolType.Cross ? cross : circle;
+            audioSource.Play();
         }
         
         private void OnMouseDown()
