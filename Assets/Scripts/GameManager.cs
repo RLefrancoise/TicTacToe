@@ -115,6 +115,7 @@ namespace TicTacToe
 		private void OnApplicationQuit()
 		{
 			if (IsGameOver.Value) return;
+			if (string.IsNullOrEmpty(PlayerPseudo)) return;
 			
 			//save current game state if game is not over
 			var snapshot = new GameSnapshot
