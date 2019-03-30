@@ -1,25 +1,36 @@
 using System;
 using System.Linq;
+using TicTacToe.IA;
 using UniRx;
 
 namespace TicTacToe
 {
+    /// <summary>
+    /// CPU class. Handles how IA is playing the game.
+    /// </summary>
     public class Cpu
     {
+        /// <summary>
+        /// Strategy to use by the CPU
+        /// </summary>
+        public IPlayTurnStrategy Strategy { get; set; }
+
+        public Cpu(IPlayTurnStrategy strategy)
+        {
+            Strategy = strategy;
+        }
+        
+        /// <summary>
+        /// Play the CPU turn
+        /// </summary>
+        /// <param name="grid">the grid to play on</param>
         public void PlayTurn(TicTacToeGrid grid)
         {
             //Simulate 1s thinking
             Observable.Timer(TimeSpan.FromSeconds(1f)).Subscribe(time =>
             {
-                var chosenSlot = ChooseRandomSlot(grid);
-                chosenSlot.PlaceSymbol.Execute();
+                Strategy.ChooseSlot(grid).PlaceSymbol.Execute();
             });
-        }
-
-        private GridSlot ChooseRandomSlot(TicTacToeGrid grid)
-        {
-            var freeSlots = grid.Slots.Where(s => s.IsFree).ToList();
-            return freeSlots[new Random(DateTime.Now.Millisecond).Next(freeSlots.Count)];
         }
     }
 }

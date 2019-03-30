@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using TicTacToe.IA;
 using TicTacToe.IO;
 using UnityEngine;
 using UniRx;
@@ -95,7 +96,8 @@ namespace TicTacToe
 			IsGameStarted = new BoolReactiveProperty();
 			IsGameOver = new BoolReactiveProperty();
 			
-			_cpu = new Cpu();
+			//Create CPU with random slot play turn strategy
+			_cpu = new Cpu(new RandomSlotPlayTurnStrategy());
 
 			WinTheGame = IsGameOver.Select(_ => IsGameOver.Value).ToReactiveCommand<WinnerType>();
 		}
@@ -305,7 +307,7 @@ namespace TicTacToe
 					: WinnerType.Cpu));
 
 			//We go back to main menu after 3 seconds
-			Observable.Timer(TimeSpan.FromSeconds(3f)).Subscribe(time => GoBackToMainMenu());
+			Observable.Timer(TimeSpan.FromSeconds(3f)).Subscribe(time => MainMenu.GoBackToMainMenu());
 		}
 
 		/// <summary>
@@ -323,14 +325,6 @@ namespace TicTacToe
 			});
 			
 			StreamingAssetsHelper.WriteToJson(history, "history");
-		}
-		
-		/// <summary>
-		/// Go back to main menu
-		/// </summary>
-		private static void GoBackToMainMenu()
-		{
-			SceneManager.LoadSceneAsync("Scenes/MainMenu");
 		}
 		
 		#endregion
