@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace TicTacToe.IA
 {
+    /// <inheritdoc />
     /// <summary>
     /// Play turn by choosing random slot on the grid
     /// </summary>

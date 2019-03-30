@@ -4,7 +4,6 @@ using TicTacToe.IA;
 using TicTacToe.IO;
 using UnityEngine;
 using UniRx;
-using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace TicTacToe
@@ -96,8 +95,8 @@ namespace TicTacToe
 			IsGameStarted = new BoolReactiveProperty();
 			IsGameOver = new BoolReactiveProperty();
 			
-			//Create CPU with random slot play turn strategy
-			_cpu = new Cpu(new RandomSlotPlayTurnStrategy());
+			//Create CPU
+			_cpu = new Cpu(new SmartPlayTurnStrategy());
 
 			WinTheGame = IsGameOver.Select(_ => IsGameOver.Value).ToReactiveCommand<WinnerType>();
 		}
