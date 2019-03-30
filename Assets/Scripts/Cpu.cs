@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using UniRx;
 
 namespace TicTacToe
 {
@@ -7,14 +8,18 @@ namespace TicTacToe
     {
         public void PlayTurn(TicTacToeGrid grid)
         {
-            var chosenSlot = ChooseRandomSlot(grid);
-            chosenSlot.PlaceSymbol.Execute();
+            //Simulate 1s thinking
+            Observable.Timer(TimeSpan.FromSeconds(1f)).Subscribe(time =>
+            {
+                var chosenSlot = ChooseRandomSlot(grid);
+                chosenSlot.PlaceSymbol.Execute();
+            });
         }
 
         private GridSlot ChooseRandomSlot(TicTacToeGrid grid)
         {
             var freeSlots = grid.Slots.Where(s => s.IsFree).ToList();
-            return freeSlots[new Random().Next(0, freeSlots.Count - 1)];
+            return freeSlots[new Random(DateTime.Now.Millisecond).Next(freeSlots.Count)];
         }
     }
 }

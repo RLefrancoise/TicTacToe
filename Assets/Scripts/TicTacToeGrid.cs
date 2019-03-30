@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UniRx;
 using UnityEngine;
 
 namespace TicTacToe
@@ -14,8 +15,12 @@ namespace TicTacToe
         public IEnumerable<IEnumerable<GridSlot>> Cols { get; private set; }
         public IEnumerable<IEnumerable<GridSlot>> Diagonals { get; private set; }
 
+        public BoolReactiveProperty IsFull { get; private set; }
+        
         private void Awake()
         {
+            IsFull = new BoolReactiveProperty();
+            
             Rows = new List<IEnumerable<GridSlot>>();
             Cols = new List<IEnumerable<GridSlot>>();
             Diagonals = new List<IEnumerable<GridSlot>>();
@@ -38,6 +43,20 @@ namespace TicTacToe
             Debug.LogFormat("Rows: [{0}]", Rows.Aggregate("", (current, row) => current + string.Join(",", row.Select(s => s.name))));
             Debug.LogFormat("Cols: [{0}]", Cols.Aggregate("", (current, col) => current + string.Join(",", col.Select(s => s.name))));
             Debug.LogFormat("Diagonals: [{0}]", Diagonals.Aggregate("", (current, diagonal) => current + string.Join(",", diagonal.Select(s => s.name))));
+        }
+
+        private void Start()
+        {
+            //listen slots to know if grid is full
+            Slots.ForEach(s => s.Symbol.Subscribe(_ => CheckIsFull()));
+        }
+        
+        /// <summary>
+        /// Check if grid is full
+        /// </summary>
+        private void CheckIsFull()
+        {
+            IsFull.Value = Slots.All(s => !s.IsFree);
         }
         
         /// <summary>

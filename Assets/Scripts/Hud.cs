@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UniRx;
@@ -22,6 +21,9 @@ namespace TicTacToe
 
         [SerializeField]
         private GameObject youWinPrefab;
+
+        [SerializeField]
+        private GameObject drawPrefab;
         
         private void Start()
         {
@@ -44,18 +46,21 @@ namespace TicTacToe
             activePlayerText.text = $"Active player: {playerName}";
         }
 
-        private void DisplayYouWinOrGameOver(PlayerType playerType)
+        private void DisplayYouWinOrGameOver(WinnerType playerType)
         {
             //game is over, hide current player name
             activePlayerText.gameObject.SetActive(false);
             
             switch (playerType)
             {
-                case PlayerType.Human:
+                case WinnerType.Human:
                     Instantiate(youWinPrefab);
                     break;
-                case PlayerType.Cpu:
+                case WinnerType.Cpu:
                     Instantiate(gameOverPrefab);
+                    break;
+                case WinnerType.Draw:
+                    Instantiate(drawPrefab);
                     break;
             }
         }

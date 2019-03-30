@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using TicTacToe.IO;
 using UnityEngine;
 using UniRx;
 using UnityEngine.SceneManagement;
@@ -82,7 +83,7 @@ namespace TicTacToe
 		/// <summary>
 		/// Player type wins the game
 		/// </summary>
-		public ReactiveCommand<PlayerType> WinTheGame;
+		public ReactiveCommand<WinnerType> WinTheGame;
 		
 		#endregion
 
@@ -96,7 +97,7 @@ namespace TicTacToe
 			
 			_cpu = new Cpu();
 
-			WinTheGame = IsGameOver.Select(_ => IsGameOver.Value).ToReactiveCommand<PlayerType>();
+			WinTheGame = IsGameOver.Select(_ => IsGameOver.Value).ToReactiveCommand<WinnerType>();
 		}
 
 		private void Start ()
@@ -107,6 +108,23 @@ namespace TicTacToe
 
 			//Listen pseudo validation
 			PseudoPanel.ValidatePseudo.Subscribe(ListenPseudoGiven);
+		}
+
+		private void OnDestroy()
+		{
+			if (IsGameOver.Value) return;
+			
+			//save current game state if game is not over
+			var snapshot = new GameSnapshot
+			{
+				currentPlayer = CurrentPlayer.Value.ToString(),
+				playerName = PseudoPanel.Pseudo.Value,
+				grid = string.Join(",", _grid.Slots.Select(s => s.Symbol.Value != null 
+					? s.Symbol.Value.Type.ToString() 
+					: "Empty"))
+			};
+
+			StreamingAssetsHelper.WriteToJson(snapshot, "snapshot");
 		}
 
 		#endregion
@@ -125,9 +143,6 @@ namespace TicTacToe
 			//grid
 			_grid = Instantiate(gridPrefab).GetComponent<TicTacToeGrid>();
 			
-			//listen slot clicks
-			_grid.Slots.ForEach(slot => slot.PlaceSymbol.Subscribe(_ => PlaceSymbolOnSlot(slot)));
-			
 			//start game
 			StartGame();
 		}
@@ -140,11 +155,14 @@ namespace TicTacToe
 			IsGameStarted.Value = true;
 
 			//Listen current player change to play turns
-			CurrentPlayer.Subscribe(PlayTurn);
+			CurrentPlayer.SkipLatestValueOnSubscribe().Subscribe(PlayTurn);
+			
+			//listen slot clicks
+			_grid.Slots.ForEach(slot => slot.PlaceSymbol.Subscribe(_ => PlaceSymbolOnSlot(slot)));
 			
 			//Choose a player randomly
 			var random = new Random(DateTime.Now.Millisecond);
-			CurrentPlayer.Value = random.Next(0, 1) == 0 ? PlayerType.Human : PlayerType.Cpu;
+			CurrentPlayer.Value = random.Next(2) == 0 ? PlayerType.Human : PlayerType.Cpu;
 		}
 		
 		/// <summary>
@@ -165,8 +183,9 @@ namespace TicTacToe
 					slot.Symbol.Value = Instantiate(crossPrefab).GetComponent<Symbol>();
 					break;
 			}
-
-			NextTurn();
+			
+			if(_grid.IsFull.Value && !CheckGameOver()) EndTheGame(true);
+			else NextTurn();
 		}
 
 		/// <summary>
@@ -177,11 +196,7 @@ namespace TicTacToe
 			//if game over, stop the game, else go to next turn
 			if (CheckGameOver())
 			{
-				IsGameOver.Value = true;
-				WinTheGame.Execute(CurrentPlayer.Value);
-				
-				//We go back to main menu after 3 seconds
-				Observable.Timer(TimeSpan.FromSeconds(3f)).Subscribe(time => GoBackToMainMenu());
+				EndTheGame(false);
 			}
 			else
 			{
@@ -216,6 +231,41 @@ namespace TicTacToe
 			       _grid.Diagonals.Any(TicTacToeGrid.AreSameSymbol);
 		}
 
+		/// <summary>
+		/// End the game
+		/// </summary>
+		private void EndTheGame(bool isDraw)
+		{
+			AddToHistory();
+			
+			IsGameOver.Value = true;
+			WinTheGame.Execute(isDraw 
+				? WinnerType.Draw 
+				: (CurrentPlayer.Value == PlayerType.Human 
+					? WinnerType.Human 
+					: WinnerType.Cpu));
+
+			//We go back to main menu after 3 seconds
+			Observable.Timer(TimeSpan.FromSeconds(3f)).Subscribe(time => GoBackToMainMenu());
+		}
+
+		/// <summary>
+		/// Add this play to history
+		/// </summary>
+		private void AddToHistory()
+		{
+			var history = StreamingAssetsHelper.GetJsonContent<GameHistory>("history");
+			
+			history.plays.Add(new GameData
+			{
+				date = DateTime.Now.ToString("g"),
+				playerName = PseudoPanel.Pseudo.Value,
+				winner = CheckGameOver() ? CurrentPlayer.Value.ToString() : WinnerType.Draw.ToString()
+			});
+			
+			StreamingAssetsHelper.WriteToJson(history, "history");
+		}
+		
 		/// <summary>
 		/// Go back to main menu
 		/// </summary>
