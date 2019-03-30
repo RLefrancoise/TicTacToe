@@ -46,6 +46,9 @@ namespace TicTacToe
 
         private void DisplayYouWinOrGameOver(PlayerType playerType)
         {
+            //game is over, hide current player name
+            activePlayerText.gameObject.SetActive(false);
+            
             switch (playerType)
             {
                 case PlayerType.Human:

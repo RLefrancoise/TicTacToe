@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UniRx;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace TicTacToe
@@ -133,6 +132,9 @@ namespace TicTacToe
 			StartGame();
 		}
 
+		/// <summary>
+		/// Start the game
+		/// </summary>
 		private void StartGame()
 		{
 			IsGameStarted.Value = true;
@@ -164,21 +166,34 @@ namespace TicTacToe
 					break;
 			}
 
+			NextTurn();
+		}
+
+		/// <summary>
+		/// Go to next turn
+		/// </summary>
+		private void NextTurn()
+		{
 			//if game over, stop the game, else go to next turn
 			if (CheckGameOver())
 			{
 				IsGameOver.Value = true;
 				WinTheGame.Execute(CurrentPlayer.Value);
+				
+				//We go back to main menu after 3 seconds
+				Observable.Timer(TimeSpan.FromSeconds(3f)).Subscribe(time => GoBackToMainMenu());
 			}
-			else NextTurn();
+			else
+			{
+				//Change current player
+				CurrentPlayer.Value = CurrentPlayer.Value == PlayerType.Human ? PlayerType.Cpu : PlayerType.Human;
+			}
 		}
 
-		private void NextTurn()
-		{
-			//Change current player
-			CurrentPlayer.Value = CurrentPlayer.Value == PlayerType.Human ? PlayerType.Cpu : PlayerType.Human;
-		}
-
+		/// <summary>
+		/// Play the current turn
+		/// </summary>
+		/// <param name="playerType"></param>
 		private void PlayTurn(PlayerType playerType)
 		{	
 			//If Cpu turn
@@ -186,6 +201,8 @@ namespace TicTacToe
 			{
 				_cpu.PlayTurn(_grid);
 			}
+			
+			//if human, waiting for slot click
 		}
 		
 		/// <summary>
@@ -197,6 +214,14 @@ namespace TicTacToe
 			return _grid.Rows.Any(TicTacToeGrid.AreSameSymbol) || 
 			       _grid.Cols.Any(TicTacToeGrid.AreSameSymbol) || 
 			       _grid.Diagonals.Any(TicTacToeGrid.AreSameSymbol);
+		}
+
+		/// <summary>
+		/// Go back to main menu
+		/// </summary>
+		private static void GoBackToMainMenu()
+		{
+			SceneManager.LoadSceneAsync("Scenes/MainMenu");
 		}
 		
 		#endregion

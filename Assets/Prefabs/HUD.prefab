@@ -59,6 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activePlayerText: {fileID: 114553511079985738}
+  gameOverPrefab: {fileID: 1909962076589590, guid: 54ac73520f5e2a146a4a3ddc9352a3a5,
+    type: 2}
+  youWinPrefab: {fileID: 1850409408504722, guid: 63054b19242638c4a876f40986f199a6,
+    type: 2}
 --- !u!114 &114553511079985738
 MonoBehaviour:
   m_ObjectHideFlags: 1
