@@ -50,11 +50,6 @@ namespace TicTacToe
 		/// tic tac toe grid
 		/// </summary>
 		private TicTacToeGrid _grid;
-
-		/// <summary>
-		/// Cpu
-		/// </summary>
-		private Cpu _cpu;
 		
 		#endregion
 		
@@ -94,9 +89,6 @@ namespace TicTacToe
 			CurrentPlayer = new ReactiveProperty<PlayerType>();
 			IsGameStarted = new BoolReactiveProperty();
 			IsGameOver = new BoolReactiveProperty();
-			
-			//Create CPU
-			_cpu = new Cpu(new SmartPlayTurnStrategy());
 
 			WinTheGame = IsGameOver.Select(_ => IsGameOver.Value).ToReactiveCommand<WinnerType>();
 		}
@@ -274,7 +266,7 @@ namespace TicTacToe
 			//If Cpu turn
 			if (CurrentPlayer.Value == PlayerType.Cpu)
 			{
-				_cpu.PlayTurn(_grid);
+				Cpu.PlayTurn(_grid);
 			}
 			
 			//if human, waiting for slot click

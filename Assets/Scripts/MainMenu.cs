@@ -18,12 +18,15 @@ namespace TicTacToe
         private Button continueButton;
         [SerializeField]
         private Button historyButton;
+        [SerializeField]
+        private Button optionsButton;
 
         private void Start()
         {
             newGameButton.OnClickAsObservable().Subscribe(_ => NewGame());
             continueButton.OnClickAsObservable().Subscribe(_ => ContinueGame());
             historyButton.OnClickAsObservable().Subscribe(_ => History());
+            optionsButton.OnClickAsObservable().Subscribe(_ => Options());
             
             //disable continue button if no snapshot
             if (!StreamingAssetsHelper.FileExists("snapshot")) continueButton.interactable = false;
@@ -45,6 +48,11 @@ namespace TicTacToe
         private static void History()
         {
             SceneManager.LoadSceneAsync("Scenes/History");
+        }
+
+        private static void Options()
+        {
+            SceneManager.LoadSceneAsync("Scenes/Options");
         }
         
         /// <summary>
