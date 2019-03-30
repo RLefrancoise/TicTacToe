@@ -55,15 +55,15 @@ namespace TicTacToe
 		/// Cpu
 		/// </summary>
 		private Cpu _cpu;
-				
+		
 		#endregion
 		
 		#region Properties
 
 		/// <summary>
-		/// Pseudo panel instance
+		/// Pseudo of the player
 		/// </summary>
-		public PseudoPanel PseudoPanel { get; private set; }
+		public string PlayerPseudo { get; private set; }
 		
 		/// <summary>
 		/// Current player
@@ -102,15 +102,24 @@ namespace TicTacToe
 
 		private void Start ()
 		{
-			//pseudo panel
-			var pseudoPanelInstance = Instantiate(pseudoPanelPrefab);
-			PseudoPanel = pseudoPanelInstance.GetComponent<PseudoPanel>();
+			//if new game, ask for a pseudo
+			if (BetweenSceneData.Mode == BetweenSceneData.GameMode.NewGame)
+			{
+				//pseudo panel
+				var pseudoPanelInstance = Instantiate(pseudoPanelPrefab);
+				var pseudoPanel = pseudoPanelInstance.GetComponent<PseudoPanel>();
 
-			//Listen pseudo validation
-			PseudoPanel.ValidatePseudo.Subscribe(ListenPseudoGiven);
+				//Listen pseudo validation
+				pseudoPanel.ValidatePseudo.Subscribe(AfterPseudoGiven);
+			}
+			//if continue game, set pseudo from snapshot
+			else
+			{
+				AfterPseudoGiven(BetweenSceneData.SnapShot.playerName);
+			}
 		}
 
-		private void OnDestroy()
+		private void OnApplicationQuit()
 		{
 			if (IsGameOver.Value) return;
 			
@@ -118,7 +127,7 @@ namespace TicTacToe
 			var snapshot = new GameSnapshot
 			{
 				currentPlayer = CurrentPlayer.Value.ToString(),
-				playerName = PseudoPanel.Pseudo.Value,
+				playerName = PlayerPseudo,
 				grid = string.Join(",", _grid.Slots.Select(s => s.Symbol.Value != null 
 					? s.Symbol.Value.Type.ToString() 
 					: "Empty"))
@@ -132,19 +141,31 @@ namespace TicTacToe
 		#region Private Methods
 
 		/// <summary>
-		/// Listen when player has given his pseudo
+		/// After pseudo has been given
 		/// </summary>
 		/// <param name="pseudo">pseudo given by the player</param>
-		private void ListenPseudoGiven(string pseudo)
+		private void AfterPseudoGiven(string pseudo)
 		{
+			PlayerPseudo = pseudo;
+			
 			//HUD
 			Instantiate(hudPrefab);
 
 			//grid
 			_grid = Instantiate(gridPrefab).GetComponent<TicTacToeGrid>();
 			
-			//start game
-			StartGame();
+			//listen slot clicks
+			_grid.Slots.ForEach(slot => slot.PlaceSymbol.Subscribe(_ => PlaceSymbolOnSlot(slot)));
+			
+			//Listen current player change to play turns
+			CurrentPlayer.SkipLatestValueOnSubscribe().Subscribe(PlayTurn);
+			
+			//new game
+			if(BetweenSceneData.Mode == BetweenSceneData.GameMode.NewGame)
+				StartGame();
+			//continue game
+			else
+				ContinuePreviousGame();
 		}
 
 		/// <summary>
@@ -154,15 +175,53 @@ namespace TicTacToe
 		{
 			IsGameStarted.Value = true;
 
-			//Listen current player change to play turns
-			CurrentPlayer.SkipLatestValueOnSubscribe().Subscribe(PlayTurn);
-			
-			//listen slot clicks
-			_grid.Slots.ForEach(slot => slot.PlaceSymbol.Subscribe(_ => PlaceSymbolOnSlot(slot)));
-			
 			//Choose a player randomly
 			var random = new Random(DateTime.Now.Millisecond);
 			CurrentPlayer.Value = random.Next(2) == 0 ? PlayerType.Human : PlayerType.Cpu;
+		}
+
+		/// <summary>
+		/// Continue previous game
+		/// </summary>
+		private void ContinuePreviousGame()
+		{
+			//init grid
+			var snapshot = BetweenSceneData.SnapShot;
+			var symbols = snapshot.grid.Split(',');
+			
+			if(symbols.Length != _grid.Slots.Count) throw new Exception("Grid snapshot has invalid slots count");
+
+			for (var i = 0; i < symbols.Length; ++i)
+			{
+				//Ignore empty slot
+				if (symbols[i] == "Empty") continue;
+				
+				Symbol.SymbolType symbolType;
+				if(!Enum.TryParse(symbols[i], out symbolType))
+					throw new Exception("Grid snapshot has invalid slot symbol");
+
+				switch (symbolType)
+				{
+					case Symbol.SymbolType.Cross:
+						_grid.Slots[i].Symbol.Value = Instantiate(crossPrefab).GetComponent<Symbol>();
+						break;
+					case Symbol.SymbolType.Circle:
+						_grid.Slots[i].Symbol.Value = Instantiate(circlePrefab).GetComponent<Symbol>();
+						break;
+				}
+			}
+			
+			IsGameStarted.Value = true;
+			
+			//Set current player
+			PlayerType playerType;
+			if(!Enum.TryParse(snapshot.currentPlayer, out playerType))
+				throw new Exception("Snapshot has invalid current player type");
+
+			CurrentPlayer.Value = playerType;
+			
+			//delete snapshot
+			StreamingAssetsHelper.DeleteFile("snapshot");
 		}
 		
 		/// <summary>
@@ -187,7 +246,7 @@ namespace TicTacToe
 			if(_grid.IsFull.Value && !CheckGameOver()) EndTheGame(true);
 			else NextTurn();
 		}
-
+		
 		/// <summary>
 		/// Go to next turn
 		/// </summary>
@@ -259,7 +318,7 @@ namespace TicTacToe
 			history.plays.Add(new GameData
 			{
 				date = DateTime.Now.ToString("g"),
-				playerName = PseudoPanel.Pseudo.Value,
+				playerName = PlayerPseudo,
 				winner = CheckGameOver() ? CurrentPlayer.Value.ToString() : WinnerType.Draw.ToString()
 			});
 			

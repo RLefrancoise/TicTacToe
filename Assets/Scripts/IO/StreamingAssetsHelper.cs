@@ -40,5 +40,33 @@ namespace TicTacToe.IO
             var content = JsonUtility.ToJson(data, true);
             File.WriteAllText(filePath, content, Encoding.UTF8);
         }
+
+        /// <summary>
+        /// Is file existing in StreamingAssets folder ?
+        /// </summary>
+        /// <param name="fileName">name of the file</param>
+        /// <returns>true if file exists</returns>
+        public static bool FileExists(string fileName)
+        {
+            if (!fileName.EndsWith(".json")) fileName = $"{fileName}.json";
+            var filePath = Path.Combine(Application.streamingAssetsPath, fileName);
+            
+            return File.Exists(filePath);
+        }
+
+        /// <summary>
+        /// Delete a file in StreamingAssets folder
+        /// </summary>
+        /// <param name="fileName">name of the file to delete</param>
+        public static void DeleteFile(string fileName)
+        {
+            if (!FileExists(fileName)) return;
+            
+            if (!fileName.EndsWith(".json")) fileName = $"{fileName}.json";
+            var filePath = Path.Combine(Application.streamingAssetsPath, fileName);
+            
+            File.Delete(filePath);
+            File.Delete($"{filePath}.meta");
+        }
     }
 }

@@ -1,3 +1,4 @@
+using TicTacToe.IO;
 using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,24 @@ namespace TicTacToe
 
         private void Start()
         {
-            newGameButton.OnClickAsObservable().Subscribe(_ => { SceneManager.LoadSceneAsync("Scenes/TicTacToe"); });
+            newGameButton.OnClickAsObservable().Subscribe(_ => NewGame());
+            continueButton.OnClickAsObservable().Subscribe(_ => ContinueGame());
+            
+            //disable continue button if no snapshot
+            if (!StreamingAssetsHelper.FileExists("snapshot")) continueButton.interactable = false;
+        }
+
+        private static void NewGame()
+        {
+            BetweenSceneData.Mode = BetweenSceneData.GameMode.NewGame;
+            SceneManager.LoadSceneAsync("Scenes/TicTacToe");
+        }
+
+        private static void ContinueGame()
+        {
+            BetweenSceneData.Mode = BetweenSceneData.GameMode.ContinueGame;
+            BetweenSceneData.SnapShot = StreamingAssetsHelper.GetJsonContent<GameSnapshot>("snapshot");
+            SceneManager.LoadSceneAsync("Scenes/TicTacToe");
         }
     }
 }

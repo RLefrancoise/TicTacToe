@@ -41,7 +41,7 @@ namespace TicTacToe
         {
             var playerName = playerType == PlayerType.Cpu 
                 ? PlayerType.Cpu.ToString() 
-                : GameManager.Instance.PseudoPanel.Pseudo.Value;
+                : GameManager.Instance.PlayerPseudo;
             
             activePlayerText.text = $"Active player: {playerName}";
         }
