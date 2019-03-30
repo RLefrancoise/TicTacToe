@@ -36,3 +36,5 @@ sysinfo.txt
 *.unitypackage
 
 .idea*
+Assets/StreamingAssets/history.json*
+Assets/StreamingAssets/snapshot.json*
