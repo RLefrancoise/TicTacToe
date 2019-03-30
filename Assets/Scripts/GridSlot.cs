@@ -1,9 +1,12 @@
-using System;
 using UniRx;
 using UnityEngine;
 
 namespace TicTacToe
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Slot of the tic tac toe grid.
+    /// </summary>
     [RequireComponent(typeof(BoxCollider))]
     public class GridSlot : MonoBehaviour
     {

@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 namespace TicTacToe
 {
+    /// <inheritdoc />
     /// <summary>
     /// Pseudo panel. Ask a pseudo to the player.
     /// </summary>
     public class PseudoPanel : MonoBehaviour
     {
+        #region Fields
+
         /// <summary>
         /// pseudo input field
         /// </summary>
@@ -21,7 +24,11 @@ namespace TicTacToe
         /// </summary>
         [SerializeField]
         private Button validateButton;
-        
+
+        #endregion
+       
+        #region Properties
+
         /// <summary>
         /// Pseudo of the player
         /// </summary>
@@ -31,7 +38,11 @@ namespace TicTacToe
         /// Validate pseudo command
         /// </summary>
         public ReactiveCommand<string> ValidatePseudo { get; private set; }
-        
+
+        #endregion
+
+        #region Unity related
+
         private void Awake()
         {
             Pseudo = new StringReactiveProperty();
@@ -41,11 +52,8 @@ namespace TicTacToe
             //Create validate pseudo command
             ValidatePseudo = Pseudo.Select(pseudo => !string.IsNullOrEmpty(pseudoInput.text)).ToReactiveCommand<string>();
             
-            //Validate pseudo stores the pseudo & hides the panel
-            ValidatePseudo.Subscribe(pseudo =>
-            {
-                gameObject.SetActive(false);
-            });
+            //Validate pseudo hides the panel
+            ValidatePseudo.Subscribe(OnValidatePseudo);
         }
 
         private void Start()
@@ -53,5 +61,16 @@ namespace TicTacToe
             //Trigger command when button is clicked
             validateButton.OnClickAsObservable().Subscribe(_ => ValidatePseudo.Execute(Pseudo.Value));
         }
+
+        #endregion
+
+        #region Private methods
+
+        private void OnValidatePseudo(string pseudo)
+        {
+            gameObject.SetActive(false);
+        }
+
+        #endregion
     }
 }

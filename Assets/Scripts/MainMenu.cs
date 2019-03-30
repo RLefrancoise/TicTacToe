@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 namespace TicTacToe
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Main menu of the game
+    /// </summary>
     public class MainMenu : MonoBehaviour
     {
         [SerializeField]

@@ -8,6 +8,7 @@ using Random = System.Random;
 
 namespace TicTacToe
 {
+	/// <inheritdoc />
 	/// <summary>
 	/// Game manager
 	/// </summary>
@@ -50,6 +51,11 @@ namespace TicTacToe
 		/// </summary>
 		private TicTacToeGrid _grid;
 
+		/// <summary>
+		/// Cpu
+		/// </summary>
+		private Cpu _cpu;
+				
 		#endregion
 		
 		#region Properties
@@ -73,6 +79,11 @@ namespace TicTacToe
 		/// Is game over ?
 		/// </summary>
 		public BoolReactiveProperty IsGameOver { get; private set; }
+
+		/// <summary>
+		/// Player type wins the game
+		/// </summary>
+		public ReactiveCommand<PlayerType> WinTheGame;
 		
 		#endregion
 
@@ -83,6 +94,10 @@ namespace TicTacToe
 			CurrentPlayer = new ReactiveProperty<PlayerType>();
 			IsGameStarted = new BoolReactiveProperty();
 			IsGameOver = new BoolReactiveProperty();
+			
+			_cpu = new Cpu();
+
+			WinTheGame = IsGameOver.Select(_ => IsGameOver.Value).ToReactiveCommand<PlayerType>();
 		}
 
 		private void Start ()
@@ -115,20 +130,19 @@ namespace TicTacToe
 			_grid.Slots.ForEach(slot => slot.PlaceSymbol.Subscribe(_ => PlaceSymbolOnSlot(slot)));
 			
 			//start game
-			StartCoroutine(StartGame());
+			StartGame();
 		}
 
-		private IEnumerator StartGame()
+		private void StartGame()
 		{
 			IsGameStarted.Value = true;
+
+			//Listen current player change to play turns
+			CurrentPlayer.Subscribe(PlayTurn);
 			
 			//Choose a player randomly
 			var random = new Random(DateTime.Now.Millisecond);
 			CurrentPlayer.Value = random.Next(0, 1) == 0 ? PlayerType.Human : PlayerType.Cpu;
-
-			
-			
-			yield return null;
 		}
 		
 		/// <summary>
@@ -137,6 +151,9 @@ namespace TicTacToe
 		/// <param name="slot"></param>
 		private void PlaceSymbolOnSlot(GridSlot slot)
 		{
+			//If game is over, stop playing game
+			if (IsGameOver.Value) return;
+			
 			switch (CurrentPlayer.Value)
 			{
 				case PlayerType.Human:
@@ -148,7 +165,11 @@ namespace TicTacToe
 			}
 
 			//if game over, stop the game, else go to next turn
-			if (CheckGameOver()) IsGameOver.Value = true;
+			if (CheckGameOver())
+			{
+				IsGameOver.Value = true;
+				WinTheGame.Execute(CurrentPlayer.Value);
+			}
 			else NextTurn();
 		}
 
@@ -156,11 +177,14 @@ namespace TicTacToe
 		{
 			//Change current player
 			CurrentPlayer.Value = CurrentPlayer.Value == PlayerType.Human ? PlayerType.Cpu : PlayerType.Human;
+		}
 
+		private void PlayTurn(PlayerType playerType)
+		{	
 			//If Cpu turn
 			if (CurrentPlayer.Value == PlayerType.Cpu)
 			{
-				
+				_cpu.PlayTurn(_grid);
 			}
 		}
 		
@@ -170,9 +194,9 @@ namespace TicTacToe
 		/// <returns></returns>
 		private bool CheckGameOver()
 		{
-			return _grid.rows.Any(TicTacToeGrid.AreSameSymbol) || 
-			       _grid.cols.Any(TicTacToeGrid.AreSameSymbol) || 
-			       _grid.diagonals.Any(TicTacToeGrid.AreSameSymbol);
+			return _grid.Rows.Any(TicTacToeGrid.AreSameSymbol) || 
+			       _grid.Cols.Any(TicTacToeGrid.AreSameSymbol) || 
+			       _grid.Diagonals.Any(TicTacToeGrid.AreSameSymbol);
 		}
 		
 		#endregion

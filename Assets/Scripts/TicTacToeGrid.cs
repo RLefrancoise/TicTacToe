@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UniRx;
 
 namespace TicTacToe
 {
@@ -9,12 +8,37 @@ namespace TicTacToe
     {
         [SerializeField]
         private List<GridSlot> slots;
-
+        
         public List<GridSlot> Slots => slots;
+        public IEnumerable<IEnumerable<GridSlot>> Rows { get; private set; }
+        public IEnumerable<IEnumerable<GridSlot>> Cols { get; private set; }
+        public IEnumerable<IEnumerable<GridSlot>> Diagonals { get; private set; }
 
-        public List<List<GridSlot>> rows;
-        public List<List<GridSlot>> cols;
-        public List<List<GridSlot>> diagonals;
+        private void Awake()
+        {
+            Rows = new List<IEnumerable<GridSlot>>();
+            Cols = new List<IEnumerable<GridSlot>>();
+            Diagonals = new List<IEnumerable<GridSlot>>();
+            
+            //rows
+            Rows = Rows.Append(Slots.Take(3));
+            Rows = Rows.Append(Slots.Skip(3).Take(3));
+            Rows = Rows.Append(Slots.Skip(6).Take(3));
+            
+            //cols
+            Cols = Cols.Append(Slots.ByIndexes(0, 3, 6));
+            Cols = Cols.Append(Slots.ByIndexes(1, 4, 7));
+            Cols = Cols.Append(Slots.ByIndexes(2, 5, 8));
+            
+            //diagonals
+            Diagonals = Diagonals.Append(Slots.ByIndexes(0, 4, 8));
+            Diagonals = Diagonals.Append(Slots.ByIndexes(2, 4, 6));
+            
+            //display rows, cols, diagonals for debug purpose
+            Debug.LogFormat("Rows: [{0}]", Rows.Aggregate("", (current, row) => current + string.Join(",", row.Select(s => s.name))));
+            Debug.LogFormat("Cols: [{0}]", Cols.Aggregate("", (current, col) => current + string.Join(",", col.Select(s => s.name))));
+            Debug.LogFormat("Diagonals: [{0}]", Diagonals.Aggregate("", (current, diagonal) => current + string.Join(",", diagonal.Select(s => s.name))));
+        }
         
         /// <summary>
         /// Check if all slots have same symbol and are not free
@@ -25,10 +49,11 @@ namespace TicTacToe
         {
             var gridSlots = slots.ToList();
             
-            if (gridSlots.Any(slot => slot.Symbol.Value == null)) return false;
+            //if any slot is free, return false
+            if (gridSlots.Any(slot => slot.IsFree)) return false;
             
             var firstSymbol = gridSlots.First().Symbol.Value.Type;
-            return gridSlots.All(slot => !slot.IsFree && slot.Symbol.Value.Type == firstSymbol);
+            return gridSlots.All(slot => slot.Symbol.Value.Type == firstSymbol);
         }
     }
 }
