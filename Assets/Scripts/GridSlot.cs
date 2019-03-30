@@ -51,6 +51,9 @@ namespace TicTacToe
                 return;
             }
 
+            //If current player is not human, ignore click
+            if (GameManager.Instance.CurrentPlayer.Value != PlayerType.Human) return;
+            
             //Execute command
             if(!PlaceSymbol.Execute())
                 Debug.LogErrorFormat("Failed to execute PlaceSymbol command on slot {0}", name);

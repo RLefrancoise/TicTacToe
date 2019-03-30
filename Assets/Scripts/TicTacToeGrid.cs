@@ -40,9 +40,9 @@ namespace TicTacToe
             Diagonals = Diagonals.Append(Slots.ByIndexes(2, 4, 6));
             
             //display rows, cols, diagonals for debug purpose
-            Debug.LogFormat("Rows: [{0}]", Rows.Aggregate("", (current, row) => current + string.Join(",", row.Select(s => s.name))));
-            Debug.LogFormat("Cols: [{0}]", Cols.Aggregate("", (current, col) => current + string.Join(",", col.Select(s => s.name))));
-            Debug.LogFormat("Diagonals: [{0}]", Diagonals.Aggregate("", (current, diagonal) => current + string.Join(",", diagonal.Select(s => s.name))));
+            Debug.LogFormat("Rows: [{0}]", Rows.Aggregate("", (current, row) => current + "(" + string.Join(",", row.Select(s => s.name)) + ")"));
+            Debug.LogFormat("Cols: [{0}]", Cols.Aggregate("", (current, col) => current + "(" + string.Join(",", col.Select(s => s.name)) + ")"));
+            Debug.LogFormat("Diagonals: [{0}]", Diagonals.Aggregate("", (current, diagonal) => current + "(" + string.Join(",", diagonal.Select(s => s.name)) + ")"));
         }
 
         private void Start()
