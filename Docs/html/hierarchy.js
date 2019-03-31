@@ -25,5 +25,8 @@ var hierarchy =
     [ "TicTacToe.IO.StreamingAssetsHelper", "class_tic_tac_toe_1_1_i_o_1_1_streaming_assets_helper.html", null ],
     [ "TicTacToe.UnitySingleton< GameManager >", "class_tic_tac_toe_1_1_unity_singleton.html", [
       [ "TicTacToe.GameManager", "class_tic_tac_toe_1_1_game_manager.html", null ]
+    ] ],
+    [ "TicTacToe.UnitySingleton< MusicManager >", "class_tic_tac_toe_1_1_unity_singleton.html", [
+      [ "TicTacToe.MusicManager", "class_tic_tac_toe_1_1_music_manager.html", null ]
     ] ]
 ];

@@ -23,6 +23,9 @@ var dir_f13b41af88cf68434578284aaf699e39 =
     [ "MainMenu.cs", "_main_menu_8cs.html", [
       [ "MainMenu", "class_tic_tac_toe_1_1_main_menu.html", "class_tic_tac_toe_1_1_main_menu" ]
     ] ],
+    [ "MusicManager.cs", "_music_manager_8cs.html", [
+      [ "MusicManager", "class_tic_tac_toe_1_1_music_manager.html", "class_tic_tac_toe_1_1_music_manager" ]
+    ] ],
     [ "OptionsScreen.cs", "_options_screen_8cs.html", [
       [ "OptionsScreen", "class_tic_tac_toe_1_1_options_screen.html", "class_tic_tac_toe_1_1_options_screen" ]
     ] ],

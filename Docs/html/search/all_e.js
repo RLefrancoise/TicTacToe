@@ -6,6 +6,8 @@ var searchData=
   ['playerpseudo',['PlayerPseudo',['../class_tic_tac_toe_1_1_game_manager.html#a001c2c21b5db27b5c72a47a51f6dee96',1,'TicTacToe::GameManager']]],
   ['playertype',['PlayerType',['../namespace_tic_tac_toe.html#a486c11ac69c5c974d0213ad450655dfd',1,'TicTacToe']]],
   ['playertype_2ecs',['PlayerType.cs',['../_player_type_8cs.html',1,'']]],
+  ['playgamemusic',['PlayGameMusic',['../class_tic_tac_toe_1_1_music_manager.html#a6f2ebe6ee145375163911d06dd0841a1',1,'TicTacToe::MusicManager']]],
+  ['playmainmenumusic',['PlayMainMenuMusic',['../class_tic_tac_toe_1_1_music_manager.html#a37c058a9ca35310ce0ad26e80fa5c9ee',1,'TicTacToe::MusicManager']]],
   ['plays',['plays',['../class_tic_tac_toe_1_1_game_history.html#a1732c3409b97aa6b7c2c42b360ab9a60',1,'TicTacToe::GameHistory']]],
   ['playturn',['PlayTurn',['../class_tic_tac_toe_1_1_cpu.html#adad7a41b63d6fa7e9cf68c083b0f4249',1,'TicTacToe.Cpu.PlayTurn()'],['../class_tic_tac_toe_1_1_game_manager.html#a4f6b373419f1da98447a08280c19f4ef',1,'TicTacToe.GameManager.PlayTurn()']]],
   ['pseudo',['Pseudo',['../class_tic_tac_toe_1_1_pseudo_panel.html#a894e710e6b379ce494c8f539bd9bbcf1',1,'TicTacToe::PseudoPanel']]],

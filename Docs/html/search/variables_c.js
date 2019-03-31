@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type',['Type',['../class_tic_tac_toe_1_1_symbol.html#a787578b36908b67bdea55c16b8c2d316',1,'TicTacToe.Symbol.Type()'],['../class_tic_tac_toe_1_1_symbol.html#a011e917d4d33597f1162c28151d9e263',1,'TicTacToe.Symbol.type()']]]
+  ['slots',['slots',['../class_tic_tac_toe_1_1_tic_tac_toe_grid.html#aed395102c23f273487c33c140fbd3288',1,'TicTacToe.TicTacToeGrid.slots()'],['../class_tic_tac_toe_1_1_tic_tac_toe_grid.html#ac832021f7a829f4631337b59ce5e20d3',1,'TicTacToe.TicTacToeGrid.Slots()']]]
 ];

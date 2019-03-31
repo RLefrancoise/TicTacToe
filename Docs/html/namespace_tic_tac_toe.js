@@ -14,6 +14,7 @@ var namespace_tic_tac_toe =
     [ "Hud", "class_tic_tac_toe_1_1_hud.html", "class_tic_tac_toe_1_1_hud" ],
     [ "ListExtensions", "class_tic_tac_toe_1_1_list_extensions.html", "class_tic_tac_toe_1_1_list_extensions" ],
     [ "MainMenu", "class_tic_tac_toe_1_1_main_menu.html", "class_tic_tac_toe_1_1_main_menu" ],
+    [ "MusicManager", "class_tic_tac_toe_1_1_music_manager.html", "class_tic_tac_toe_1_1_music_manager" ],
     [ "OptionsScreen", "class_tic_tac_toe_1_1_options_screen.html", "class_tic_tac_toe_1_1_options_screen" ],
     [ "PseudoPanel", "class_tic_tac_toe_1_1_pseudo_panel.html", "class_tic_tac_toe_1_1_pseudo_panel" ],
     [ "Symbol", "class_tic_tac_toe_1_1_symbol.html", "class_tic_tac_toe_1_1_symbol" ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['optionsbutton',['optionsButton',['../class_tic_tac_toe_1_1_main_menu.html#ab917849046ecd59c2fd56996bb663c8b',1,'TicTacToe::MainMenu']]]
+  ['newgamebutton',['newGameButton',['../class_tic_tac_toe_1_1_main_menu.html#a9de507f104d7c02ad82eb336e2790ccb',1,'TicTacToe::MainMenu']]]
 ];
