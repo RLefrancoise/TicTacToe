@@ -5,7 +5,13 @@ namespace TicTacToe
     /// </summary>
     public enum PlayerType
     {
+        /// <summary>
+        /// Human player
+        /// </summary>
         Human,
+        /// <summary>
+        /// CPU player
+        /// </summary>
         Cpu
     }
 }

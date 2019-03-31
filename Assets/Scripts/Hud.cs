@@ -15,13 +15,19 @@ namespace TicTacToe
         /// </summary>
         [SerializeField]
         private TMP_Text activePlayerText;
-
+        /// <summary>
+        /// Game over message prefab
+        /// </summary>
         [SerializeField]
         private GameObject gameOverPrefab;
-
+        /// <summary>
+        /// You win message prefab
+        /// </summary>
         [SerializeField]
         private GameObject youWinPrefab;
-
+        /// <summary>
+        /// Draw message prefab
+        /// </summary>
         [SerializeField]
         private GameObject drawPrefab;
         
@@ -46,6 +52,10 @@ namespace TicTacToe
             activePlayerText.text = $"Active player: {playerName}";
         }
 
+        /// <summary>
+        /// Display winning message according to game result
+        /// </summary>
+        /// <param name="playerType"></param>
         private void DisplayYouWinOrGameOver(WinnerType playerType)
         {
             //game is over, hide current player name

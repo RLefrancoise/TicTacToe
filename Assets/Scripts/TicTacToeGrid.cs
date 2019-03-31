@@ -5,16 +5,36 @@ using UnityEngine;
 
 namespace TicTacToe
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Tic Tac Toe grid
+    /// </summary>
     public class TicTacToeGrid : MonoBehaviour
     {
+        /// <summary>
+        /// Slots of the grid
+        /// </summary>
         [SerializeField]
         private List<GridSlot> slots;
-        
+        /// <summary>
+        /// Slots of the grid
+        /// </summary>
         public List<GridSlot> Slots => slots;
+        /// <summary>
+        /// Grid rows
+        /// </summary>
         public IEnumerable<IEnumerable<GridSlot>> Rows { get; private set; }
+        /// <summary>
+        /// grid columns
+        /// </summary>
         public IEnumerable<IEnumerable<GridSlot>> Cols { get; private set; }
+        /// <summary>
+        /// Grid diagonals
+        /// </summary>
         public IEnumerable<IEnumerable<GridSlot>> Diagonals { get; private set; }
-
+        /// <summary>
+        /// Is grid full ?
+        /// </summary>
         public BoolReactiveProperty IsFull { get; private set; }
         
         private void Awake()

@@ -10,7 +10,13 @@ namespace TicTacToe
         /// </summary>
         public enum GameMode
         {
+            /// <summary>
+            /// New game mode
+            /// </summary>
             NewGame,
+            /// <summary>
+            /// Continue game mode
+            /// </summary>
             ContinueGame
         }
 

@@ -42,6 +42,10 @@ namespace TicTacToe
             PlaceSymbol = Symbol.Select(s => s == null).ToReactiveCommand();
         }
         
+        /// <summary>
+        /// Set the symbol on the slot
+        /// </summary>
+        /// <param name="symbol">symbol to set on the slot</param>
         private void SetSymbol(Symbol symbol)
         {
             if (symbol == null) return;

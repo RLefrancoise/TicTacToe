@@ -1,0 +1,26 @@
+var class_tic_tac_toe_1_1_game_manager =
+[
+    [ "AddToHistory", "class_tic_tac_toe_1_1_game_manager.html#a3835c0a84d0b18d52aac8ff9834298f8", null ],
+    [ "AfterPseudoGiven", "class_tic_tac_toe_1_1_game_manager.html#a58d60c16bf42c4b9bb5db7c1290b1de3", null ],
+    [ "Awake", "class_tic_tac_toe_1_1_game_manager.html#a3981133e64c4a6644309edf9dc1fefe7", null ],
+    [ "CheckGameOver", "class_tic_tac_toe_1_1_game_manager.html#abf377be366d0dc96adc52536628db366", null ],
+    [ "ContinuePreviousGame", "class_tic_tac_toe_1_1_game_manager.html#a3b211615d036873211a76fa63017e646", null ],
+    [ "EndTheGame", "class_tic_tac_toe_1_1_game_manager.html#a1a466930a966c573de8e1ec3b5320fe1", null ],
+    [ "NextTurn", "class_tic_tac_toe_1_1_game_manager.html#a70ea779c1e7db8bf4ce980eb3c2d9115", null ],
+    [ "OnApplicationQuit", "class_tic_tac_toe_1_1_game_manager.html#abc42f68ee9e651d7b5b5122e165d022e", null ],
+    [ "PlaceSymbolOnSlot", "class_tic_tac_toe_1_1_game_manager.html#ad28e7d5ea65465b6f582d4914cbaae49", null ],
+    [ "PlayTurn", "class_tic_tac_toe_1_1_game_manager.html#a4f6b373419f1da98447a08280c19f4ef", null ],
+    [ "Start", "class_tic_tac_toe_1_1_game_manager.html#a8ee7b60f4dcc4b34fbc4ba9b39cfa952", null ],
+    [ "StartGame", "class_tic_tac_toe_1_1_game_manager.html#ae058fba848dfe53506eed0e09ab1f731", null ],
+    [ "_grid", "class_tic_tac_toe_1_1_game_manager.html#a6f60107555ab2d60bdca246cb731e41c", null ],
+    [ "circlePrefab", "class_tic_tac_toe_1_1_game_manager.html#a90434425a066d87a4081dfc655b34347", null ],
+    [ "crossPrefab", "class_tic_tac_toe_1_1_game_manager.html#a61ed0a8ebe0e754ecc6ba7d634375e6b", null ],
+    [ "gridPrefab", "class_tic_tac_toe_1_1_game_manager.html#a4c316f819968ecbf2f3d112303c1948a", null ],
+    [ "hudPrefab", "class_tic_tac_toe_1_1_game_manager.html#ab4f720da8063f2552d6bbd8c3a979ce4", null ],
+    [ "pseudoPanelPrefab", "class_tic_tac_toe_1_1_game_manager.html#a0d402bb823f79678dc53161a7c515eda", null ],
+    [ "WinTheGame", "class_tic_tac_toe_1_1_game_manager.html#a5071febd9ba7ba7f311cbc3229de38e4", null ],
+    [ "CurrentPlayer", "class_tic_tac_toe_1_1_game_manager.html#a410640195d5769dd4d15f2c49967f8ab", null ],
+    [ "IsGameOver", "class_tic_tac_toe_1_1_game_manager.html#abc5855c70ca7bfeabc26a5183942f2cc", null ],
+    [ "IsGameStarted", "class_tic_tac_toe_1_1_game_manager.html#adb069adcd9d2d27dc3a569cf09bbd333", null ],
+    [ "PlayerPseudo", "class_tic_tac_toe_1_1_game_manager.html#a001c2c21b5db27b5c72a47a51f6dee96", null ]
+];

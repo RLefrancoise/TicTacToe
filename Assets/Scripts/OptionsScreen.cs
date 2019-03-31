@@ -6,11 +6,21 @@ using UnityEngine.UI;
 
 namespace TicTacToe
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Options screen
+    /// </summary>
     public class OptionsScreen : MonoBehaviour
     {
+        /// <summary>
+        /// CPU smartness slider
+        /// </summary>
         [SerializeField]
         private Slider cpuSmartnessSlider;
 
+        /// <summary>
+        /// CPU smartness value text
+        /// </summary>
         [SerializeField]
         private TMP_Text cpuSmartnessValue;
         
