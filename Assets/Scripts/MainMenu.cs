@@ -30,6 +30,9 @@ namespace TicTacToe
             
             //disable continue button if no snapshot
             if (!StreamingAssetsHelper.FileExists("snapshot")) continueButton.interactable = false;
+            
+            //disable history button if no history
+            if (!StreamingAssetsHelper.FileExists("history")) historyButton.interactable = false;
         }
 
         private static void NewGame()
