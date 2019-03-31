@@ -35,6 +35,9 @@ namespace TicTacToe
 
         private void Start()
         {
+            //play main menu music
+            MusicManager.Instance.PlayMainMenuMusic();
+            
             newGameButton.OnClickAsObservable().Subscribe(_ => NewGame());
             continueButton.OnClickAsObservable().Subscribe(_ => ContinueGame());
             historyButton.OnClickAsObservable().Subscribe(_ => History());

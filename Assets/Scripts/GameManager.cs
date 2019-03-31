@@ -95,6 +95,9 @@ namespace TicTacToe
 
 		private void Start ()
 		{
+			//play game music
+			MusicManager.Instance.PlayGameMusic();
+			
 			//if new game, ask for a pseudo
 			if (BetweenSceneData.Mode == BetweenSceneData.GameMode.NewGame)
 			{
