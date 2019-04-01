@@ -119,8 +119,6 @@ namespace TicTacToe
 		#if (!UNITY_ANDROID || UNITY_EDITOR)
 		private void OnApplicationQuit()
 		{
-			base.OnDestroy();
-			
 			if (IsGameOver.Value) return;
 			if (string.IsNullOrEmpty(PlayerPseudo)) return;
 			
