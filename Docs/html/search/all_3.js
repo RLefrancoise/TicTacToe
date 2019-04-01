@@ -6,6 +6,7 @@ var searchData=
   ['chooseslot',['ChooseSlot',['../interface_tic_tac_toe_1_1_i_a_1_1_i_play_turn_strategy.html#a7841d3852118f2ec2caa5c1e63f7dd08',1,'TicTacToe.IA.IPlayTurnStrategy.ChooseSlot()'],['../class_tic_tac_toe_1_1_i_a_1_1_random_slot_play_turn_strategy.html#ae75c31bcd2b85b897ac798164d93b414',1,'TicTacToe.IA.RandomSlotPlayTurnStrategy.ChooseSlot()'],['../class_tic_tac_toe_1_1_i_a_1_1_smart_play_turn_strategy.html#ab6bec4586e755f7d94585ae49ca03ebc',1,'TicTacToe.IA.SmartPlayTurnStrategy.ChooseSlot()']]],
   ['circle',['circle',['../class_tic_tac_toe_1_1_grid_slot.html#a69f85ad7ec7dfd8f3becd5e48d52bc40',1,'TicTacToe.GridSlot.circle()'],['../class_tic_tac_toe_1_1_symbol.html#acb8cd12670f2920bf54115b7f0b79efda30954d90085f6eaaf5817917fc5fecb3',1,'TicTacToe.Symbol.Circle()']]],
   ['circleprefab',['circlePrefab',['../class_tic_tac_toe_1_1_game_manager.html#a90434425a066d87a4081dfc655b34347',1,'TicTacToe::GameManager']]],
+  ['clickslot',['ClickSlot',['../class_tic_tac_toe_1_1_grid_slot.html#adba1c5c69c6c8a7765e2344cb1d81941',1,'TicTacToe::GridSlot']]],
   ['cols',['Cols',['../class_tic_tac_toe_1_1_tic_tac_toe_grid.html#abd7c07b57495fae87a1568f60c8ce394',1,'TicTacToe::TicTacToeGrid']]],
   ['continuebutton',['continueButton',['../class_tic_tac_toe_1_1_main_menu.html#a4d912bb0bd7818891a6321954bacf34a',1,'TicTacToe::MainMenu']]],
   ['continuegame',['ContinueGame',['../class_tic_tac_toe_1_1_main_menu.html#a513b330feaa1d6433450e9d5d1cf329c',1,'TicTacToe.MainMenu.ContinueGame()'],['../class_tic_tac_toe_1_1_between_scene_data.html#a1ee3c1ee7fa7d782fd3974a8692d388ca5d3313060b4af773c4a9625ad9eee948',1,'TicTacToe.BetweenSceneData.ContinueGame()']]],
@@ -15,7 +16,7 @@ var searchData=
   ['cpusmartnessslider',['cpuSmartnessSlider',['../class_tic_tac_toe_1_1_options_screen.html#aedc9f87ce9825aa91609ee56d143459c',1,'TicTacToe::OptionsScreen']]],
   ['cpusmartnessvalue',['cpuSmartnessValue',['../class_tic_tac_toe_1_1_options_screen.html#a87573886164bf1bf7835f237911e421c',1,'TicTacToe::OptionsScreen']]],
   ['cpuwincolor',['cpuWinColor',['../class_tic_tac_toe_1_1_history_entry.html#a13f57dd7ee41f143fcc452d0878d14d4',1,'TicTacToe::HistoryEntry']]],
-  ['cross',['Cross',['../class_tic_tac_toe_1_1_symbol.html#acb8cd12670f2920bf54115b7f0b79efdae76b449b9fc8536af7557ffa6321d269',1,'TicTacToe.Symbol.Cross()'],['../class_tic_tac_toe_1_1_grid_slot.html#a0073de533bfd0175b2d325ba3681d6a0',1,'TicTacToe.GridSlot.cross()']]],
+  ['cross',['cross',['../class_tic_tac_toe_1_1_grid_slot.html#a0073de533bfd0175b2d325ba3681d6a0',1,'TicTacToe.GridSlot.cross()'],['../class_tic_tac_toe_1_1_symbol.html#acb8cd12670f2920bf54115b7f0b79efdae76b449b9fc8536af7557ffa6321d269',1,'TicTacToe.Symbol.Cross()']]],
   ['crossprefab',['crossPrefab',['../class_tic_tac_toe_1_1_game_manager.html#a61ed0a8ebe0e754ecc6ba7d634375e6b',1,'TicTacToe::GameManager']]],
   ['currentplayer',['CurrentPlayer',['../class_tic_tac_toe_1_1_game_manager.html#a410640195d5769dd4d15f2c49967f8ab',1,'TicTacToe.GameManager.CurrentPlayer()'],['../class_tic_tac_toe_1_1_game_snapshot.html#ad6406d012484774f80f714946912848e',1,'TicTacToe.GameSnapshot.currentPlayer()']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tictactoegrid_2ecs',['TicTacToeGrid.cs',['../_tic_tac_toe_grid_8cs.html',1,'']]]
+  ['randomslotplayturnstrategy_2ecs',['RandomSlotPlayTurnStrategy.cs',['../_random_slot_play_turn_strategy_8cs.html',1,'']]]
 ];

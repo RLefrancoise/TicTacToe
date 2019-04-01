@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['game',['game',['../class_tic_tac_toe_1_1_music_manager.html#ae683053f58b80deb1a091351f8b6ab67',1,'TicTacToe::MusicManager']]],
-  ['gameoverprefab',['gameOverPrefab',['../class_tic_tac_toe_1_1_hud.html#ab6f04c8f9ea0079316e37fb43341f29d',1,'TicTacToe::Hud']]],
-  ['grid',['grid',['../class_tic_tac_toe_1_1_game_snapshot.html#a9fee6f575cdd6aeabe7742d1b4146af3',1,'TicTacToe::GameSnapshot']]],
-  ['gridprefab',['gridPrefab',['../class_tic_tac_toe_1_1_game_manager.html#a4c316f819968ecbf2f3d112303c1948a',1,'TicTacToe::GameManager']]]
+  ['eventtrigger',['eventTrigger',['../class_tic_tac_toe_1_1_grid_slot.html#a3a1e1ff6a998103f0cf4b75eeeca47c9',1,'TicTacToe::GridSlot']]]
 ];

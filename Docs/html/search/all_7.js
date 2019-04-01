@@ -11,7 +11,7 @@ var searchData=
   ['gameoverprefab',['gameOverPrefab',['../class_tic_tac_toe_1_1_hud.html#ab6f04c8f9ea0079316e37fb43341f29d',1,'TicTacToe::Hud']]],
   ['gamesnapshot',['GameSnapshot',['../class_tic_tac_toe_1_1_game_snapshot.html',1,'TicTacToe']]],
   ['gamesnapshot_2ecs',['GameSnapshot.cs',['../_game_snapshot_8cs.html',1,'']]],
-  ['getjsoncontent_3c_20t_20_3e',['GetJsonContent&lt; T &gt;',['../class_tic_tac_toe_1_1_i_o_1_1_streaming_assets_helper.html#ae68c3a0bc81aa1aeb20d274d21e5f6b0',1,'TicTacToe::IO::StreamingAssetsHelper']]],
+  ['getjsoncontent_3c_20t_20_3e',['GetJsonContent&lt; T &gt;',['../class_tic_tac_toe_1_1_i_o_1_1_data_helper.html#a0ccd78f104d0014f6956701cda52a313',1,'TicTacToe::IO::DataHelper']]],
   ['gobacktomainmenu',['GoBackToMainMenu',['../class_tic_tac_toe_1_1_main_menu.html#a6d6be27970f962868502257f9e4862c8',1,'TicTacToe::MainMenu']]],
   ['grid',['grid',['../class_tic_tac_toe_1_1_game_snapshot.html#a9fee6f575cdd6aeabe7742d1b4146af3',1,'TicTacToe::GameSnapshot']]],
   ['gridprefab',['gridPrefab',['../class_tic_tac_toe_1_1_game_manager.html#a4c316f819968ecbf2f3d112303c1948a',1,'TicTacToe::GameManager']]],

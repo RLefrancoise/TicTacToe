@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['smartplayturnstrategy_2ecs',['SmartPlayTurnStrategy.cs',['../_smart_play_turn_strategy_8cs.html',1,'']]],
-  ['streamingassetshelper_2ecs',['StreamingAssetsHelper.cs',['../_streaming_assets_helper_8cs.html',1,'']]],
-  ['symbol_2ecs',['Symbol.cs',['../_symbol_8cs.html',1,'']]]
+  ['playertype_2ecs',['PlayerType.cs',['../_player_type_8cs.html',1,'']]],
+  ['postprocesssetup_2ecs',['PostProcessSetup.cs',['../_post_process_setup_8cs.html',1,'']]],
+  ['pseudopanel_2ecs',['PseudoPanel.cs',['../_pseudo_panel_8cs.html',1,'']]]
 ];

@@ -3,6 +3,7 @@ var searchData=
   ['activeplayertext',['activePlayerText',['../class_tic_tac_toe_1_1_hud.html#acca79543040d3f680227d3f6d95164c8',1,'TicTacToe::Hud']]],
   ['addtohistory',['AddToHistory',['../class_tic_tac_toe_1_1_game_manager.html#a3835c0a84d0b18d52aac8ff9834298f8',1,'TicTacToe::GameManager']]],
   ['afterpseudogiven',['AfterPseudoGiven',['../class_tic_tac_toe_1_1_game_manager.html#a58d60c16bf42c4b9bb5db7c1290b1de3',1,'TicTacToe::GameManager']]],
+  ['androidprofile',['androidProfile',['../class_tic_tac_toe_1_1_post_process_setup.html#aa73b7f7816cb261a785ccae83ef4bad0',1,'TicTacToe::PostProcessSetup']]],
   ['aresamesymbol',['AreSameSymbol',['../class_tic_tac_toe_1_1_tic_tac_toe_grid.html#a53088f1ed9d84fb5875872a73706da5b',1,'TicTacToe::TicTacToeGrid']]],
   ['attachtoslot',['AttachToSlot',['../class_tic_tac_toe_1_1_symbol.html#a2f2e734fa695554a3b343ec7b57bb120',1,'TicTacToe::Symbol']]],
   ['audiosource',['audioSource',['../class_tic_tac_toe_1_1_grid_slot.html#ab5f8e49c955168148e0c1068b20736a3',1,'TicTacToe.GridSlot.audioSource()'],['../class_tic_tac_toe_1_1_music_manager.html#a703707041c595f23b30ff271f92b83c5',1,'TicTacToe.MusicManager.audioSource()']]],

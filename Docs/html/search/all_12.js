@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['unitysingleton',['UnitySingleton',['../class_tic_tac_toe_1_1_unity_singleton.html',1,'TicTacToe']]],
-  ['unitysingleton_2ecs',['UnitySingleton.cs',['../_unity_singleton_8cs.html',1,'']]],
-  ['unitysingleton_3c_20gamemanager_20_3e',['UnitySingleton&lt; GameManager &gt;',['../class_tic_tac_toe_1_1_unity_singleton.html',1,'TicTacToe']]],
-  ['unitysingleton_3c_20musicmanager_20_3e',['UnitySingleton&lt; MusicManager &gt;',['../class_tic_tac_toe_1_1_unity_singleton.html',1,'TicTacToe']]],
-  ['updatecurrentplayername',['UpdateCurrentPlayerName',['../class_tic_tac_toe_1_1_hud.html#a46f9fa04d0a16fb6dd8ce62757cfaa80',1,'TicTacToe::Hud']]]
+  ['ia',['IA',['../namespace_tic_tac_toe_1_1_i_a.html',1,'TicTacToe']]],
+  ['io',['IO',['../namespace_tic_tac_toe_1_1_i_o.html',1,'TicTacToe']]],
+  ['tictactoe',['TicTacToe',['../namespace_tic_tac_toe.html',1,'']]],
+  ['tictactoegrid',['TicTacToeGrid',['../class_tic_tac_toe_1_1_tic_tac_toe_grid.html',1,'TicTacToe']]],
+  ['tictactoegrid_2ecs',['TicTacToeGrid.cs',['../_tic_tac_toe_grid_8cs.html',1,'']]],
+  ['type',['Type',['../class_tic_tac_toe_1_1_symbol.html#a787578b36908b67bdea55c16b8c2d316',1,'TicTacToe.Symbol.Type()'],['../class_tic_tac_toe_1_1_symbol.html#a011e917d4d33597f1162c28151d9e263',1,'TicTacToe.Symbol.type()']]]
 ];

@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['historyentry',['HistoryEntry',['../class_tic_tac_toe_1_1_history_entry.html',1,'TicTacToe']]],
-  ['historyscreen',['HistoryScreen',['../class_tic_tac_toe_1_1_history_screen.html',1,'TicTacToe']]],
-  ['hud',['Hud',['../class_tic_tac_toe_1_1_hud.html',1,'TicTacToe']]]
+  ['gamedata',['GameData',['../class_tic_tac_toe_1_1_game_data.html',1,'TicTacToe']]],
+  ['gamehistory',['GameHistory',['../class_tic_tac_toe_1_1_game_history.html',1,'TicTacToe']]],
+  ['gamemanager',['GameManager',['../class_tic_tac_toe_1_1_game_manager.html',1,'TicTacToe']]],
+  ['gamesnapshot',['GameSnapshot',['../class_tic_tac_toe_1_1_game_snapshot.html',1,'TicTacToe']]],
+  ['gridslot',['GridSlot',['../class_tic_tac_toe_1_1_grid_slot.html',1,'TicTacToe']]]
 ];

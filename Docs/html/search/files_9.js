@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['randomslotplayturnstrategy_2ecs',['RandomSlotPlayTurnStrategy.cs',['../_random_slot_play_turn_strategy_8cs.html',1,'']]]
+  ['optionsscreen_2ecs',['OptionsScreen.cs',['../_options_screen_8cs.html',1,'']]]
 ];

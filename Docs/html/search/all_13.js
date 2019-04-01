@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['validatebutton',['validateButton',['../class_tic_tac_toe_1_1_pseudo_panel.html#a6f993f248a66214b4f33e7d4d76e4a73',1,'TicTacToe::PseudoPanel']]],
-  ['validatepseudo',['ValidatePseudo',['../class_tic_tac_toe_1_1_pseudo_panel.html#a237b62df6a1e8f6bdcca5e9b0156188c',1,'TicTacToe::PseudoPanel']]]
+  ['unitysingleton',['UnitySingleton',['../class_tic_tac_toe_1_1_unity_singleton.html',1,'TicTacToe']]],
+  ['unitysingleton_2ecs',['UnitySingleton.cs',['../_unity_singleton_8cs.html',1,'']]],
+  ['unitysingleton_3c_20gamemanager_20_3e',['UnitySingleton&lt; GameManager &gt;',['../class_tic_tac_toe_1_1_unity_singleton.html',1,'TicTacToe']]],
+  ['unitysingleton_3c_20musicmanager_20_3e',['UnitySingleton&lt; MusicManager &gt;',['../class_tic_tac_toe_1_1_unity_singleton.html',1,'TicTacToe']]],
+  ['updatecurrentplayername',['UpdateCurrentPlayerName',['../class_tic_tac_toe_1_1_hud.html#a46f9fa04d0a16fb6dd8ce62757cfaa80',1,'TicTacToe::Hud']]]
 ];
