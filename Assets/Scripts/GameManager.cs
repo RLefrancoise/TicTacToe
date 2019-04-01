@@ -116,8 +116,11 @@ namespace TicTacToe
 			}
 		}
 
+		#if (!UNITY_ANDROID || UNITY_EDITOR)
 		private void OnApplicationQuit()
 		{
+			base.OnDestroy();
+			
 			if (IsGameOver.Value) return;
 			if (string.IsNullOrEmpty(PlayerPseudo)) return;
 			
@@ -133,7 +136,28 @@ namespace TicTacToe
 
 			DataHelper.WriteToJson(snapshot, "snapshot");
 		}
+		#else
+		private void OnApplicationPause(bool pauseStatus)
+		{
+			if (!pauseStatus) return;
+			
+			if (IsGameOver.Value) return;
+			if (string.IsNullOrEmpty(PlayerPseudo)) return;
+			
+			//save current game state if game is not over
+			var snapshot = new GameSnapshot
+			{
+				currentPlayer = CurrentPlayer.Value.ToString(),
+				playerName = PlayerPseudo,
+				grid = string.Join(",", _grid.Slots.Select(s => s.Symbol.Value != null 
+					? s.Symbol.Value.Type.ToString() 
+					: "Empty"))
+			};
 
+			DataHelper.WriteToJson(snapshot, "snapshot");
+		}
+		#endif
+		
 		#endregion
 
 		#region Private Methods

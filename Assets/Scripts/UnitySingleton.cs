@@ -23,7 +23,7 @@ namespace TicTacToe
             }
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             if (_instance == this) _instance = null;
         }
