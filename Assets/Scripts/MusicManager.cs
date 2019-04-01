@@ -24,11 +24,6 @@ namespace TicTacToe
         /// </summary>
         [SerializeField]
         private AudioClip game;
-
-        private void Start()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
         
         /// <summary>
         /// Play game music
