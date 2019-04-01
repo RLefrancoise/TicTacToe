@@ -4,6 +4,7 @@ using TicTacToe.IA;
 using TicTacToe.IO;
 using UnityEngine;
 using UniRx;
+using UnityEngine.PostProcessing;
 using Random = System.Random;
 
 namespace TicTacToe
@@ -94,7 +95,7 @@ namespace TicTacToe
 		}
 
 		private void Start ()
-		{
+		{	
 			//play game music
 			MusicManager.Instance.PlayGameMusic();
 			
