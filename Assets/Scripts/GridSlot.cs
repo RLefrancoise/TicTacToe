@@ -1,5 +1,6 @@
 using UniRx;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace TicTacToe
 {
@@ -7,14 +8,29 @@ namespace TicTacToe
     /// <summary>
     /// Slot of the tic tac toe grid.
     /// </summary>
+    [RequireComponent(typeof(EventTrigger))]
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(AudioSource))]
     public class GridSlot : MonoBehaviour
     {
+        /// <summary>
+        /// event trigger to handle click
+        /// </summary>
+        [SerializeField]
+        private EventTrigger eventTrigger;
+        /// <summary>
+        /// audio source to play place sound
+        /// </summary>
         [SerializeField]
         private AudioSource audioSource;
+        /// <summary>
+        /// sound for circle symbol
+        /// </summary>
         [SerializeField]
         private AudioClip circle;
+        /// <summary>
+        /// sound for cross symbol
+        /// </summary>
         [SerializeField]
         private AudioClip cross;
         
@@ -40,6 +56,16 @@ namespace TicTacToe
             
             //Place symbol can execute only if no symbol in the slot & game is started
             PlaceSymbol = Symbol.Select(s => s == null).ToReactiveCommand();
+
+            //listen click
+            var pointerClickEntry = new EventTrigger.Entry
+            {
+                eventID = EventTriggerType.PointerClick,
+                callback = new EventTrigger.TriggerEvent()
+            };
+            pointerClickEntry.callback.AddListener(e => ClickSlot());
+            
+            eventTrigger.triggers.Add(pointerClickEntry);
         }
         
         /// <summary>
@@ -55,8 +81,11 @@ namespace TicTacToe
             audioSource.clip = symbol.Type == TicTacToe.Symbol.SymbolType.Cross ? cross : circle;
             audioSource.Play();
         }
-        
-        private void OnMouseDown()
+
+        /// <summary>
+        /// Click the slot
+        /// </summary>
+        private void ClickSlot()
         {
             Debug.LogFormat("Slot {0} is clicked", name);
 
