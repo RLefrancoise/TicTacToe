@@ -35,7 +35,7 @@ namespace TicTacToe
             backButton.OnClickAsObservable().Subscribe(_ => MainMenu.GoBackToMainMenu());
 
             //Read history
-            var history = StreamingAssetsHelper.GetJsonContent<GameHistory>("history");
+            var history = DataHelper.GetJsonContent<GameHistory>("history");
 
             foreach (var entry in history.plays)
             {

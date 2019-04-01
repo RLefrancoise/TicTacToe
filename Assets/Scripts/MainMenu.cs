@@ -44,10 +44,10 @@ namespace TicTacToe
             optionsButton.OnClickAsObservable().Subscribe(_ => Options());
             
             //disable continue button if no snapshot
-            if (!StreamingAssetsHelper.FileExists("snapshot")) continueButton.interactable = false;
+            if (!DataHelper.FileExists("snapshot")) continueButton.interactable = false;
             
             //disable history button if no history
-            if (!StreamingAssetsHelper.FileExists("history")) historyButton.interactable = false;
+            if (!DataHelper.FileExists("history")) historyButton.interactable = false;
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace TicTacToe
         private static void ContinueGame()
         {
             BetweenSceneData.Mode = BetweenSceneData.GameMode.ContinueGame;
-            BetweenSceneData.SnapShot = StreamingAssetsHelper.GetJsonContent<GameSnapshot>("snapshot");
+            BetweenSceneData.SnapShot = DataHelper.GetJsonContent<GameSnapshot>("snapshot");
             SceneManager.LoadSceneAsync("Scenes/TicTacToe");
         }
 

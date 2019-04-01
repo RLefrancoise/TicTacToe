@@ -130,7 +130,7 @@ namespace TicTacToe
 					: "Empty"))
 			};
 
-			StreamingAssetsHelper.WriteToJson(snapshot, "snapshot");
+			DataHelper.WriteToJson(snapshot, "snapshot");
 		}
 
 		#endregion
@@ -218,7 +218,7 @@ namespace TicTacToe
 			CurrentPlayer.Value = playerType;
 			
 			//delete snapshot
-			StreamingAssetsHelper.DeleteFile("snapshot");
+			DataHelper.DeleteFile("snapshot");
 		}
 		
 		/// <summary>
@@ -310,7 +310,7 @@ namespace TicTacToe
 		/// </summary>
 		private void AddToHistory()
 		{
-			var history = StreamingAssetsHelper.GetJsonContent<GameHistory>("history");
+			var history = DataHelper.GetJsonContent<GameHistory>("history");
 			
 			history.plays.Add(new GameData
 			{
@@ -319,7 +319,7 @@ namespace TicTacToe
 				winner = CheckGameOver() ? CurrentPlayer.Value.ToString() : WinnerType.Draw.ToString()
 			});
 			
-			StreamingAssetsHelper.WriteToJson(history, "history");
+			DataHelper.WriteToJson(history, "history");
 		}
 		
 		#endregion
